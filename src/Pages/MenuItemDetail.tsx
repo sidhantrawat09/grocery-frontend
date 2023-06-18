@@ -3,6 +3,7 @@ import { useDispatch } from "react-redux";
 import { useGetMenuItemQuery } from "../Apis/menuItemApi";
 import { setMenuItem } from "../Storage/Redux/menuItemSlice";
 import { useNavigate, useParams } from "react-router-dom";
+import { useUpdateShoppingCartMutation } from "../Apis/shoppingCartApi";
 
 function MenuItemDetail() {
   const navigate = useNavigate();
@@ -10,12 +11,25 @@ function MenuItemDetail() {
   const dispatch = useDispatch();
   const { data, isLoading } = useGetMenuItemQuery(menuItemId);
   const [quantity, setQuantity] = useState<number>(1);
+  const [isAddingToCart, setIsAddingToCart] = useState<boolean>(false);
+  const [updateShoppingCart] = useUpdateShoppingCartMutation();
 
   const handleQuantity = (value: number) => {
     if (quantity + value < 1) {
       return;
     }
     setQuantity(quantity + value);
+  };
+
+  const handleAddToCart = async (menuItemId: number) => {
+    setIsAddingToCart(true);
+    const response = await updateShoppingCart({
+      menuItemId: menuItemId,
+      updateQuantityBy: quantity,
+      userId: "06b077d1-0a54-4aaa-ba00-dd75c7364d1b",
+    });
+    console.log(response);
+    setIsAddingToCart(false);
   };
 
   useEffect(() => {
@@ -61,7 +75,8 @@ function MenuItemDetail() {
             </span>
             <div className="row pt-4">
               <div className="col-5">
-                <button className="btn btn-success form-control">
+                <button className="btn btn-success form-control"
+                onClick={()=>handleAddToCart(data.result?.id)}>
                   Add to Cart
                 </button>
               </div>
