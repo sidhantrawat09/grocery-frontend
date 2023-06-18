@@ -4,6 +4,7 @@ import { useGetMenuItemQuery } from "../Apis/menuItemApi";
 import { setMenuItem } from "../Storage/Redux/menuItemSlice";
 import { useNavigate, useParams } from "react-router-dom";
 import { useUpdateShoppingCartMutation } from "../Apis/shoppingCartApi";
+import { MainLoader } from "../Components/Page/Common";
 
 function MenuItemDetail() {
   const navigate = useNavigate();
@@ -101,7 +102,7 @@ function MenuItemDetail() {
           </div>
         </div>
       ) : (
-        <div>Loading...</div>
+        <MainLoader />
       )}
     </div>
   );
