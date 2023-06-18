@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { Footer, Header } from "../Components/Layout/Index";
 import { menuItemModel } from "../Interfaces/Index";
-import { Home, MenuItemDetail, NotFound, ShoppingCart } from "../Pages";
+import { Home, Login, MenuItemDetail, NotFound, Register, ShoppingCart } from "../Pages";
 import { Route, Routes } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { useGetShoppingCartQuery } from "../Apis/shoppingCartApi";
@@ -32,6 +32,8 @@ function App() {
             element={<MenuItemDetail />}
           ></Route>
           <Route path="/ShoppingCart" element={<ShoppingCart />}></Route>
+          <Route path="/Register" element={<Register />}></Route>
+          <Route path="/Login" element={<Login />}></Route>
 
           <Route path="*" element={<NotFound />}></Route>
         </Routes>

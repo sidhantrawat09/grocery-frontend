@@ -20,28 +20,40 @@ export default function Header() {
           <span className="navbar-toggler-icon"></span>
         </button>
         <div className="collapse navbar-collapse" id="navbarSupportedContent">
-          <ul className="navbar-nav me-auto mb-2 mb-lg-0">
+          <ul className="navbar-nav me-auto mb-2 mb-lg-0 w-100">
             <li className="nav-item">
               <NavLink className="nav-link active" aria-current="page" to="/">
                 Home
               </NavLink>
             </li>
             <li className="nav-item mr-4">
-              <NavLink className="nav-link active" aria-current="page" to="/shoppingcart">
-              <i className ="bi bi-cart"></i> View Cart
+              <NavLink
+                className="nav-link active"
+                aria-current="page"
+                to="/shoppingcart"
+              >
+                <i className="bi bi-cart"></i> View Cart
               </NavLink>
             </li>
             <li className="nav-item">
-              <NavLink className="nav-link active" aria-current="page" to="/shoppingcart">
-              <i className="bi bi-bag-heart-fill"></i> My Orders
+              <NavLink
+                className="nav-link active"
+                aria-current="page"
+                to="/shoppingcart"
+              >
+                <i className="bi bi-bag-heart-fill"></i> My Orders
               </NavLink>
             </li>
             <li className="nav-item">
-              <NavLink className="nav-link active" aria-current="page" to="/shoppingcart">
-              <i className="bi bi-question-circle-fill"></i> Help
+              <NavLink
+                className="nav-link active"
+                aria-current="page"
+                to="/shoppingcart"
+              >
+                <i className="bi bi-question-circle-fill"></i> Help
               </NavLink>
             </li>
-            <li className="nav-item dropdown">
+            {/* <li className="nav-item dropdown">
               <a
                 className="nav-link dropdown-toggle"
                 href="#"
@@ -69,9 +81,40 @@ export default function Header() {
                   </a>
                 </li>
               </ul>
+            </li> */}
+            <li className="nav-item"></li>
+            <div className="d-flex" style={{marginLeft:"auto"}}>
+              <li className="nav-item pt-1">
+                <button
+                  className="btn btn-success btn-outlined rounded-pill text-white mx-2"
+                  style={{
+                    border: "none",
+                    height: "40px",
+                    width: "100px",
+                  }}
+                >
+                  Logout
+                </button>
+              </li>
+              <li className="nav-item text-white">
+              <NavLink
+                className="nav-link active"
+                aria-current="page"
+                to="/Register"
+              >
+                Register
+              </NavLink>
             </li>
-            <li className="nav-item">
+            <li className="nav-item text-white">
+              <NavLink
+                className="nav-link active"
+                aria-current="page"
+                to="/Login"
+              >
+                Login
+              </NavLink>
             </li>
+            </div>
           </ul>
         </div>
       </div>
