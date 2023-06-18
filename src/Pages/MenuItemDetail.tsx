@@ -4,7 +4,7 @@ import { useGetMenuItemQuery } from "../Apis/menuItemApi";
 import { setMenuItem } from "../Storage/Redux/menuItemSlice";
 import { useNavigate, useParams } from "react-router-dom";
 import { useUpdateShoppingCartMutation } from "../Apis/shoppingCartApi";
-import { MainLoader } from "../Components/Page/Common";
+import { MainLoader, MiniLoader } from "../Components/Page/Common";
 
 function MenuItemDetail() {
   const navigate = useNavigate();
@@ -76,10 +76,18 @@ function MenuItemDetail() {
             </span>
             <div className="row pt-4">
               <div className="col-5">
-                <button className="btn btn-success form-control"
-                onClick={()=>handleAddToCart(data.result?.id)}>
-                  Add to Cart
-                </button>
+                {isAddingToCart ? (
+                  <button disabled className="btn btn-success form-control">
+                    <MiniLoader type="warning" />
+                  </button>
+                ) : (
+                  <button
+                    className="btn btn-success form-control"
+                    onClick={() => handleAddToCart(data.result?.id)}
+                  >
+                    Add to Cart
+                  </button>
+                )}
               </div>
 
               <div className="col-5 ">
